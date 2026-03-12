@@ -1,7 +1,17 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
+const configuracion: NextConfig = {
+  // Permitir imágenes de Supabase Storage
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '*.supabase.co',
+      },
+    ],
+  },
+  // Deshabilitar header por seguridad
+  poweredByHeader: false,
+}
 
-export default nextConfig;
+export default configuracion
