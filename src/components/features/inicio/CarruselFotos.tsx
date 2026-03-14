@@ -1,94 +1,178 @@
 'use client'
 
-// Carrusel de fotos estilo showreel
-// Se desplaza horizontalmente al hacer scroll vertical
+// Sección "Nuestros Momentos" - Grid de fotos verticales + Showreel
+// Layout: fotos a la izquierda, video showreel a la derecha
 
-import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { ContenedorAnimado } from '@/components/features/compartidos/ContenedorAnimado'
 
-// Fotos de ejemplo (usar placeholders hasta tener fotos reales)
+// Fotos con orientación principalmente vertical
 const FOTOS = [
-  { id: 1, titulo: 'Inauguración', descripcion: 'El inicio de una nueva temporada' },
-  { id: 2, titulo: 'Clásico Capitalino', descripcion: 'El enfrentamiento más esperado' },
-  { id: 3, titulo: 'Doble Jornada', descripcion: 'Noche de wiffle ball bajo las luces' },
-  { id: 4, titulo: 'Copa Venezuela', descripcion: 'El torneo nacional más importante' },
-  { id: 5, titulo: 'Celebración', descripcion: 'Momentos de victoria y unión' },
-  { id: 6, titulo: 'Entrenamiento', descripcion: 'Preparación para la victoria' },
+  {
+    id: 1,
+    src: '/imagenes/DSC06563.webp',
+    titulo: 'El bateador',
+    descripcion: 'Concentración total en el plato',
+    span: 'col-span-1 row-span-3',
+    real: true,
+  },
+  {
+    id: 2,
+    src: '/imagenes/DSC06645.jpg',
+    titulo: 'En práctica',
+    descripcion: 'Preparando el swing perfecto',
+    span: 'col-span-1 row-span-2',
+    real: true,
+  },
+  {
+    id: 3,
+    src: '/imagenes/DSC06704.jpg',
+    titulo: 'Copa Venezuela',
+    descripcion: 'El torneo nacional más importante',
+    span: 'col-span-1 row-span-2',
+    real: true,
+  },
+  {
+    id: 4,
+    src: '/imagenes/DSC06716.jpg',
+    titulo: 'Doble Jornada',
+    descripcion: 'Noche de wiffle ball bajo las luces',
+    span: 'col-span-1 row-span-1',
+    real: true,
+  },
+  {
+    id: 5,
+    src: '/imagenes/DSC06449.jpg',
+    titulo: 'Inauguración',
+    descripcion: 'El inicio de una nueva temporada',
+    span: 'col-span-2 row-span-1',
+    real: true,
+  },
 ]
 
-// Colores de borde rotativos para cada foto
-const COLORES_BORDE = ['#FFD700', '#00BFFF', '#FF3B3B', '#FFEA00', '#0077B6', '#E63946']
+const COLORES_ACENTO = ['#FFFFFF', '#E5E5E5', '#9CA3AF', '#C0C0C0', '#808080']
 
 export function CarruselFotos() {
-  const contenedorRef = useRef(null)
-  const { scrollYProgress } = useScroll({
-    target: contenedorRef,
-    offset: ['start end', 'end start'],
-  })
-
-  // Mapear el scroll vertical a desplazamiento horizontal
-  const x = useTransform(scrollYProgress, [0, 1], ['10%', '-60%'])
-
   return (
-    <section ref={contenedorRef} className="py-20 overflow-hidden">
-      {/* Título de sección */}
-      <ContenedorAnimado className="max-w-7xl mx-auto px-4 mb-12">
-        <h2 className="font-titulos text-4xl md:text-5xl lg:text-6xl font-bold text-centro">
-          <span className="text-texto-principal">NUESTROS </span>
-          <span className="texto-gradiente-venezuela">MOMENTOS</span>
-        </h2>
-        <p className="text-texto-secundario text-center mt-4 max-w-xl mx-auto">
-          Revive los mejores momentos de la liga a través de nuestras fotos.
-        </p>
-      </ContenedorAnimado>
+    <section className="py-24 px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
 
-      {/* Carrusel horizontal */}
-      <motion.div style={{ x }} className="flex gap-6 px-8">
-        {FOTOS.map((foto, indice) => (
-          <motion.div
-            key={foto.id}
-            className="relative flex-shrink-0 w-72 sm:w-80 md:w-96 aspect-[4/3] rounded-xl overflow-hidden group cursor-pointer"
-            whileHover={{ scale: 1.03, y: -5 }}
-            transition={{ duration: 0.3 }}
-          >
-            {/* Fondo placeholder */}
-            <div
-              className="absolute inset-0 bg-fondo-elevado flex items-center justify-center"
-              style={{
-                borderWidth: 2,
-                borderStyle: 'solid',
-                borderColor: COLORES_BORDE[indice % COLORES_BORDE.length],
-                borderRadius: '0.75rem',
-              }}
-            >
-              <div className="text-center p-6">
-                <div
-                  className="text-6xl mb-4 opacity-30"
-                  style={{ color: COLORES_BORDE[indice % COLORES_BORDE.length] }}
-                >
-                  ⚾
+        {/* Título */}
+        <ContenedorAnimado className="mb-14">
+          <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-azul-primario/60 mb-4">
+            GALERÍA
+          </p>
+          <h2 className="font-titulos text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9]">
+            <span className="text-texto-principal">NUESTROS</span>
+            <br />
+            <span className="texto-gradiente">MOMENTOS</span>
+          </h2>
+        </ContenedorAnimado>
+
+        {/* Layout: fotos izquierda + showreel derecha */}
+        <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-4 items-stretch">
+
+          {/* ── Columna izquierda: grid de fotos verticales ── */}
+          <div className="grid grid-cols-2 gap-3 auto-rows-[140px] md:auto-rows-[160px]">
+            {FOTOS.map((foto, indice) => (
+              <motion.div
+                key={foto.id}
+                className={`relative rounded-xl overflow-hidden cursor-pointer group ${foto.span}`}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ duration: 0.5, delay: indice * 0.08 }}
+              >
+                {foto.real ? (
+                  /* Imagen real */
+                  <Image
+                    src={foto.src!}
+                    alt={foto.titulo}
+                    fill
+                    className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 50vw, 30vw"
+                  />
+                ) : (
+                  /* Placeholder */
+                  <div className="absolute inset-0 bg-fondo-elevado border border-borde-sutil/50">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span
+                        className="text-5xl opacity-10"
+                        style={{ color: COLORES_ACENTO[indice % COLORES_ACENTO.length] }}
+                      >
+                        ⚾
+                      </span>
+                    </div>
+                  </div>
+                )}
+
+                {/* Overlay hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-fondo-principal/90 via-fondo-principal/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-4">
+                  <div>
+                    <h3
+                      className="font-titulos text-base font-bold mb-0.5"
+                      style={{ color: COLORES_ACENTO[indice % COLORES_ACENTO.length] }}
+                    >
+                      {foto.titulo}
+                    </h3>
+                    <p className="text-texto-secundario/70 text-[11px] leading-snug">
+                      {foto.descripcion}
+                    </p>
+                  </div>
                 </div>
-                <p className="text-texto-apagado text-sm">
-                  Foto {foto.id} - Reemplazar
-                </p>
-              </div>
-            </div>
 
-            {/* Overlay con información al hover */}
-            <div className="absolute inset-0 bg-gradient-to-t from-fondo-principal/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6 rounded-xl">
-              <div>
-                <h3 className="font-titulos text-xl font-bold text-amarillo-neon">
-                  {foto.titulo}
-                </h3>
-                <p className="text-texto-secundario text-sm mt-1">
-                  {foto.descripcion}
+                {/* Borde de color en hover */}
+                <div
+                  className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{
+                    border: `1px solid ${COLORES_ACENTO[indice % COLORES_ACENTO.length]}40`,
+                  }}
+                />
+              </motion.div>
+            ))}
+          </div>
+
+          {/* ── Columna derecha: showreel ── */}
+          <motion.div
+            className="h-full"
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+          >
+            {/* Video que ocupa toda la altura de la columna izquierda */}
+            <div className="relative h-full min-h-[400px] rounded-2xl overflow-hidden bg-fondo-elevado border border-borde-sutil/40">
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+              >
+                <source src="/videos/showreel.mp4" type="video/mp4" />
+              </video>
+
+              {/* Etiqueta superpuesta — esquina superior izquierda */}
+              <div className="absolute top-4 left-4 z-10 flex items-center gap-2 vidrio rounded-full px-3 py-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-texto-principal animate-pulse" />
+                <p className="text-[9px] font-medium uppercase tracking-[0.2em] text-texto-principal/80">
+                  SHOWREEL OFICIAL
                 </p>
               </div>
+
+              {/* Degradado inferior sutil */}
+              <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-fondo-principal/70 to-transparent pointer-events-none z-10" />
+
+              {/* Texto inferior */}
+              <p className="absolute bottom-4 left-4 right-4 text-texto-apagado text-[11px] z-10">
+                Liga Venezolana de Wiffle Ball — Temporada 2026
+              </p>
             </div>
           </motion.div>
-        ))}
-      </motion.div>
+
+        </div>
+      </div>
     </section>
   )
 }

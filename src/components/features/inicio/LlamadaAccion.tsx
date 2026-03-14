@@ -1,15 +1,14 @@
 'use client'
 
-// Sección de llamada a la acción (CTA) con estadísticas animadas
+// Sección CTA estilo GRIND con estadísticas y texto LWBV de fondo
 
 import { useEffect, useState, useRef } from 'react'
-import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
+import { ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { RUTAS } from '@/lib/utilidades/constantes'
+import { ENLACE_WHATSAPP } from '@/lib/utilidades/constantes'
 import { ContenedorAnimado } from '@/components/features/compartidos/ContenedorAnimado'
 
-// Estadísticas de la liga
 const ESTADISTICAS = [
   { numero: 50, sufijo: '+', etiqueta: 'Jugadores' },
   { numero: 12, sufijo: '', etiqueta: 'Equipos' },
@@ -17,7 +16,6 @@ const ESTADISTICAS = [
   { numero: 6, sufijo: '', etiqueta: 'Ciudades' },
 ]
 
-// Componente de contador animado
 function ContadorAnimado({ objetivo, sufijo }: { objetivo: number; sufijo: string }) {
   const [conteo, setConteo] = useState(0)
   const ref = useRef(null)
@@ -26,8 +24,8 @@ function ContadorAnimado({ objetivo, sufijo }: { objetivo: number; sufijo: strin
   useEffect(() => {
     if (!enVista) return
 
-    const duracion = 2000 // 2 segundos
-    const incremento = objetivo / (duracion / 16) // ~60fps
+    const duracion = 2000
+    const incremento = objetivo / (duracion / 16)
     let actual = 0
 
     const intervalo = setInterval(() => {
@@ -52,58 +50,62 @@ function ContadorAnimado({ objetivo, sufijo }: { objetivo: number; sufijo: strin
 
 export function LlamadaAccion() {
   return (
-    <section className="relative py-24 px-4 overflow-hidden">
-      {/* Fondo con gradiente sutil */}
-      <div className="absolute inset-0 bg-gradient-to-b from-fondo-principal via-fondo-elevado/50 to-fondo-principal" />
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 gradiente-venezuela" style={{ filter: 'blur(100px)' }} />
+    <section className="relative py-32 px-6 lg:px-8 overflow-hidden">
+      {/* Fondo sutil */}
+      <div className="absolute inset-0 bg-gradient-to-b from-fondo-principal via-fondo-elevado/30 to-fondo-principal" />
+
+      {/* Texto LWBV de fondo */}
+      <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none">
+        <span
+          className="texto-fondo-3d font-titulos font-bold leading-none select-none opacity-50"
+          style={{ fontSize: 'clamp(150px, 20vw, 400px)' }}
+        >
+          LWBV
+        </span>
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto text-center">
-        {/* Título */}
-        <ContenedorAnimado>
-          <h2 className="font-titulos text-4xl md:text-5xl lg:text-7xl font-bold mb-6">
-            <span className="text-texto-principal">ÚNETE A LA </span>
-            <span className="texto-gradiente-venezuela">LIGA</span>
-          </h2>
-          <p className="text-texto-secundario text-lg md:text-xl max-w-2xl mx-auto mb-10">
-            Forma parte de la comunidad de Wiffle Ball más vibrante de Venezuela.
-            No importa tu nivel, aquí todos juegan.
-          </p>
-        </ContenedorAnimado>
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-12">
+          {/* Título alineado izquierda */}
+          <ContenedorAnimado>
+            <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-azul-primario/60 mb-4">
+              ÚNETE
+            </p>
+            <h2 className="font-titulos text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] mb-8">
+              <span className="text-texto-principal">ÚNETE AL</span>
+              <br />
+              <span className="texto-gradiente">JUEGO.</span>
+            </h2>
+            <p className="text-texto-secundario/70 text-sm md:text-base max-w-md leading-relaxed mb-8">
+              Forma parte de la comunidad de Wiffle Ball más vibrante de Venezuela.
+              No importa tu nivel, aquí todos juegan.
+            </p>
+            <a href={ENLACE_WHATSAPP} target="_blank" rel="noopener noreferrer">
+              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                <Button className="boton-vidrio text-azul-cielo font-titulos font-bold text-sm tracking-wider rounded-full px-8 py-6 gap-2">
+                  INSCRÍBETE AHORA
+                  <ArrowRight className="size-4" />
+                </Button>
+              </motion.div>
+            </a>
+          </ContenedorAnimado>
 
-        {/* Botón CTA grande */}
-        <ContenedorAnimado retraso={0.2}>
-          <Link href={RUTAS.INSCRIPCIONES}>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button
-                size="lg"
-                className="bg-amarillo-neon text-fondo-principal font-titulos font-bold text-xl px-12 py-8 hover:bg-amarillo-brillante transition-all animate-pulso-neon"
-              >
-                INSCRÍBETE AHORA
-              </Button>
-            </motion.div>
-          </Link>
-        </ContenedorAnimado>
-
-        {/* Estadísticas */}
-        <ContenedorAnimado retraso={0.4} className="mt-16">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {ESTADISTICAS.map((stat) => (
-              <div key={stat.etiqueta} className="text-center">
-                <div className="font-titulos text-4xl md:text-5xl font-bold text-amarillo-neon mb-2">
-                  <ContadorAnimado objetivo={stat.numero} sufijo={stat.sufijo} />
+          {/* Estadísticas */}
+          <ContenedorAnimado retraso={0.3}>
+            <div className="grid grid-cols-2 gap-8 lg:gap-12">
+              {ESTADISTICAS.map((stat) => (
+                <div key={stat.etiqueta}>
+                  <div className="font-titulos text-4xl md:text-5xl font-bold text-texto-principal mb-1">
+                    <ContadorAnimado objetivo={stat.numero} sufijo={stat.sufijo} />
+                  </div>
+                  <div className="text-[10px] text-texto-apagado uppercase tracking-[0.2em]">
+                    {stat.etiqueta}
+                  </div>
                 </div>
-                <div className="text-texto-apagado text-sm uppercase tracking-wider">
-                  {stat.etiqueta}
-                </div>
-              </div>
-            ))}
-          </div>
-        </ContenedorAnimado>
+              ))}
+            </div>
+          </ContenedorAnimado>
+        </div>
       </div>
     </section>
   )

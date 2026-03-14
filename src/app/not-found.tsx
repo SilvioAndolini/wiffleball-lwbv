@@ -9,7 +9,7 @@ export default function NoEncontrado() {
     <div className="min-h-screen flex items-center justify-center bg-fondo-principal px-4">
       <div className="text-center max-w-lg">
         {/* Número 404 gigante con efecto */}
-        <h1 className="font-titulos text-[10rem] md:text-[14rem] font-bold leading-none texto-gradiente-venezuela opacity-80">
+        <h1 className="font-titulos text-[10rem] md:text-[14rem] font-bold leading-none texto-gradiente opacity-80">
           404
         </h1>
 
@@ -26,7 +26,7 @@ export default function NoEncontrado() {
         <Link href={RUTAS.INICIO}>
           <Button
             size="lg"
-            className="bg-amarillo-neon text-fondo-principal font-titulos font-bold hover:bg-amarillo-brillante"
+            className="boton-vidrio text-azul-cielo font-titulos font-bold"
           >
             VOLVER AL INICIO
           </Button>

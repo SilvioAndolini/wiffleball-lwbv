@@ -69,7 +69,7 @@ export function FormularioInscripcion() {
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-fondo-tarjeta border border-green-500/30 rounded-xl p-8 text-center max-w-lg mx-auto"
+        className="vidrio-fuerte rounded-2xl p-8 text-center max-w-lg mx-auto"
       >
         <motion.div
           initial={{ scale: 0 }}
@@ -87,7 +87,7 @@ export function FormularioInscripcion() {
         </p>
         <Button
           onClick={reiniciar}
-          className="bg-amarillo-neon text-fondo-principal font-titulos font-bold hover:bg-amarillo-brillante"
+          className="boton-vidrio text-azul-cielo font-titulos font-bold rounded-full px-6"
         >
           INSCRIBIRSE EN OTRO JUEGO
         </Button>
@@ -100,7 +100,7 @@ export function FormularioInscripcion() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       onSubmit={handleSubmit(alEnviar)}
-      className="bg-fondo-tarjeta border border-borde-sutil rounded-xl p-6 md:p-8 space-y-6 max-w-2xl mx-auto"
+      className="vidrio-fuerte rounded-2xl p-6 md:p-8 space-y-6"
     >
       {/* Error global */}
       <AnimatePresence>
@@ -109,7 +109,7 @@ export function FormularioInscripcion() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="bg-rojo-neon/10 border border-rojo-neon/30 rounded-lg p-4 text-rojo-neon text-sm"
+            className="bg-gris-acento/10 border border-gris-acento/30 rounded-lg p-4 text-gris-acento text-sm"
           >
             {errorEnvio}
           </motion.div>
@@ -119,16 +119,16 @@ export function FormularioInscripcion() {
       {/* Nombre completo */}
       <div className="space-y-2">
         <Label htmlFor="nombreCompleto" className="text-texto-principal font-medium">
-          Nombre Completo <span className="text-rojo-neon">*</span>
+          Nombre Completo <span className="text-gris-acento">*</span>
         </Label>
         <Input
           id="nombreCompleto"
           placeholder="Tu nombre completo"
-          className="bg-fondo-elevado border-borde-sutil focus:border-amarillo-neon text-texto-principal"
+          className="bg-fondo-elevado border-borde-sutil focus:border-azul-primario text-texto-principal"
           {...register('nombreCompleto')}
         />
         {errors.nombreCompleto && (
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-rojo-neon text-xs">
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-gris-acento text-xs">
             {errors.nombreCompleto.message}
           </motion.p>
         )}
@@ -138,17 +138,17 @@ export function FormularioInscripcion() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label htmlFor="correo" className="text-texto-principal font-medium">
-            Correo Electrónico <span className="text-rojo-neon">*</span>
+            Correo Electrónico <span className="text-gris-acento">*</span>
           </Label>
           <Input
             id="correo"
             type="email"
             placeholder="tu@correo.com"
-            className="bg-fondo-elevado border-borde-sutil focus:border-amarillo-neon text-texto-principal"
+            className="bg-fondo-elevado border-borde-sutil focus:border-azul-primario text-texto-principal"
             {...register('correo')}
           />
           {errors.correo && (
-            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-rojo-neon text-xs">
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-gris-acento text-xs">
               {errors.correo.message}
             </motion.p>
           )}
@@ -162,11 +162,11 @@ export function FormularioInscripcion() {
             id="telefono"
             type="tel"
             placeholder="+58 412 1234567"
-            className="bg-fondo-elevado border-borde-sutil focus:border-amarillo-neon text-texto-principal"
+            className="bg-fondo-elevado border-borde-sutil focus:border-azul-primario text-texto-principal"
             {...register('telefono')}
           />
           {errors.telefono && (
-            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-rojo-neon text-xs">
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-gris-acento text-xs">
               {errors.telefono.message}
             </motion.p>
           )}
@@ -176,11 +176,11 @@ export function FormularioInscripcion() {
       {/* Juego */}
       <div className="space-y-2">
         <Label htmlFor="juegoId" className="text-texto-principal font-medium">
-          Juego <span className="text-rojo-neon">*</span>
+          Juego <span className="text-gris-acento">*</span>
         </Label>
         <select
           id="juegoId"
-          className="w-full h-9 rounded-lg border border-borde-sutil bg-fondo-elevado px-3 text-sm text-texto-principal focus:border-amarillo-neon focus:outline-none focus:ring-1 focus:ring-amarillo-neon"
+          className="w-full h-9 rounded-lg border border-borde-sutil bg-fondo-elevado px-3 text-sm text-texto-principal focus:border-azul-primario focus:outline-none focus:ring-1 focus:ring-azul-primario"
           {...register('juegoId')}
         >
           <option value="">Selecciona un juego</option>
@@ -191,7 +191,7 @@ export function FormularioInscripcion() {
           ))}
         </select>
         {errors.juegoId && (
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-rojo-neon text-xs">
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-gris-acento text-xs">
             {errors.juegoId.message}
           </motion.p>
         )}
@@ -201,11 +201,11 @@ export function FormularioInscripcion() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label htmlFor="experiencia" className="text-texto-principal font-medium">
-            Nivel de Experiencia <span className="text-rojo-neon">*</span>
+            Nivel de Experiencia <span className="text-gris-acento">*</span>
           </Label>
           <select
             id="experiencia"
-            className="w-full h-9 rounded-lg border border-borde-sutil bg-fondo-elevado px-3 text-sm text-texto-principal focus:border-amarillo-neon focus:outline-none focus:ring-1 focus:ring-amarillo-neon"
+            className="w-full h-9 rounded-lg border border-borde-sutil bg-fondo-elevado px-3 text-sm text-texto-principal focus:border-azul-primario focus:outline-none focus:ring-1 focus:ring-azul-primario"
             {...register('experiencia')}
           >
             <option value="principiante">Principiante</option>
@@ -213,7 +213,7 @@ export function FormularioInscripcion() {
             <option value="avanzado">Avanzado</option>
           </select>
           {errors.experiencia && (
-            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-rojo-neon text-xs">
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-gris-acento text-xs">
               {errors.experiencia.message}
             </motion.p>
           )}
@@ -226,7 +226,7 @@ export function FormularioInscripcion() {
           <Input
             id="posicion"
             placeholder="Ej: Pitcher, Bateador, Jardinero"
-            className="bg-fondo-elevado border-borde-sutil focus:border-amarillo-neon text-texto-principal"
+            className="bg-fondo-elevado border-borde-sutil focus:border-azul-primario text-texto-principal"
             {...register('posicion')}
           />
         </div>
@@ -246,11 +246,11 @@ export function FormularioInscripcion() {
           id="notas"
           placeholder="Algo que debamos saber..."
           rows={3}
-          className="bg-fondo-elevado border-borde-sutil focus:border-amarillo-neon text-texto-principal resize-none"
+          className="bg-fondo-elevado border-borde-sutil focus:border-azul-primario text-texto-principal resize-none"
           {...register('notas')}
         />
         {errors.notas && (
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-rojo-neon text-xs">
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-gris-acento text-xs">
             {errors.notas.message}
           </motion.p>
         )}
@@ -260,7 +260,7 @@ export function FormularioInscripcion() {
       <Button
         type="submit"
         disabled={enviando}
-        className="w-full bg-amarillo-neon text-fondo-principal font-titulos font-bold text-lg py-6 hover:bg-amarillo-brillante transition-all disabled:opacity-50"
+        className="w-full boton-vidrio text-azul-cielo font-titulos font-bold text-lg py-6 rounded-xl disabled:opacity-50"
       >
         {enviando ? (
           <span className="flex items-center gap-2">

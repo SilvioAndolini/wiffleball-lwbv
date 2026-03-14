@@ -1,9 +1,8 @@
 'use client'
 
-// Componente de enlace individual con animación de underline
+// Enlace de navegación minimalista estilo GRIND
 
 import Link from 'next/link'
-import { motion } from 'framer-motion'
 
 interface PropiedadesEnlace {
   nombre: string
@@ -17,23 +16,11 @@ export function EnlaceNavegacion({ nombre, ruta, activo, onClick }: PropiedadesE
     <Link
       href={ruta}
       onClick={onClick}
-      className="relative py-2 group"
+      className={`text-xs font-medium uppercase tracking-[0.15em] transition-colors ${
+        activo ? 'text-azul-primario' : 'text-texto-principal/80 hover:text-texto-principal'
+      }`}
     >
-      <span
-        className={`text-sm font-medium transition-colors ${
-          activo ? 'text-amarillo-neon' : 'text-texto-principal hover:text-amarillo-neon'
-        }`}
-      >
-        {nombre}
-      </span>
-      {/* Underline animado */}
-      <motion.div
-        className="absolute bottom-0 left-0 h-0.5 bg-amarillo-neon"
-        initial={{ width: activo ? '100%' : '0%' }}
-        animate={{ width: activo ? '100%' : '0%' }}
-        whileHover={{ width: '100%' }}
-        transition={{ duration: 0.3 }}
-      />
+      {nombre}
     </Link>
   )
 }

@@ -73,7 +73,7 @@ export function FormularioContacto() {
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-fondo-tarjeta border border-green-500/30 rounded-xl p-8 text-center"
+        className="vidrio-fuerte rounded-2xl p-8 text-center"
       >
         <motion.div
           initial={{ scale: 0 }}
@@ -91,7 +91,7 @@ export function FormularioContacto() {
         </p>
         <Button
           onClick={() => setExito(false)}
-          className="bg-amarillo-neon text-fondo-principal font-titulos font-bold hover:bg-amarillo-brillante"
+          className="boton-vidrio text-azul-cielo font-titulos font-bold rounded-full px-6"
         >
           ENVIAR OTRO MENSAJE
         </Button>
@@ -104,7 +104,7 @@ export function FormularioContacto() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       onSubmit={handleSubmit(alEnviar)}
-      className="bg-fondo-tarjeta border border-borde-sutil rounded-xl p-6 md:p-8 space-y-6"
+      className="vidrio-fuerte rounded-2xl p-6 md:p-8 space-y-6"
     >
       {/* Error global */}
       <AnimatePresence>
@@ -113,7 +113,7 @@ export function FormularioContacto() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="bg-rojo-neon/10 border border-rojo-neon/30 rounded-lg p-4 text-rojo-neon text-sm"
+            className="bg-gris-acento/10 border border-gris-acento/30 rounded-lg p-4 text-gris-acento text-sm"
           >
             {errorEnvio}
           </motion.div>
@@ -123,16 +123,16 @@ export function FormularioContacto() {
       {/* Nombre */}
       <div className="space-y-2">
         <Label htmlFor="nombre" className="text-texto-principal font-medium">
-          Nombre <span className="text-rojo-neon">*</span>
+          Nombre <span className="text-gris-acento">*</span>
         </Label>
         <Input
           id="nombre"
           placeholder="Tu nombre"
-          className="bg-fondo-elevado border-borde-sutil focus:border-amarillo-neon text-texto-principal"
+          className="bg-fondo-elevado border-borde-sutil focus:border-azul-primario text-texto-principal"
           {...register('nombre')}
         />
         {errors.nombre && (
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-rojo-neon text-xs">
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-gris-acento text-xs">
             {errors.nombre.message}
           </motion.p>
         )}
@@ -141,17 +141,17 @@ export function FormularioContacto() {
       {/* Correo */}
       <div className="space-y-2">
         <Label htmlFor="correo" className="text-texto-principal font-medium">
-          Correo Electrónico <span className="text-rojo-neon">*</span>
+          Correo Electrónico <span className="text-gris-acento">*</span>
         </Label>
         <Input
           id="correo"
           type="email"
           placeholder="tu@correo.com"
-          className="bg-fondo-elevado border-borde-sutil focus:border-amarillo-neon text-texto-principal"
+          className="bg-fondo-elevado border-borde-sutil focus:border-azul-primario text-texto-principal"
           {...register('correo')}
         />
         {errors.correo && (
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-rojo-neon text-xs">
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-gris-acento text-xs">
             {errors.correo.message}
           </motion.p>
         )}
@@ -160,16 +160,16 @@ export function FormularioContacto() {
       {/* Asunto */}
       <div className="space-y-2">
         <Label htmlFor="asunto" className="text-texto-principal font-medium">
-          Asunto <span className="text-rojo-neon">*</span>
+          Asunto <span className="text-gris-acento">*</span>
         </Label>
         <Input
           id="asunto"
           placeholder="¿En qué podemos ayudarte?"
-          className="bg-fondo-elevado border-borde-sutil focus:border-amarillo-neon text-texto-principal"
+          className="bg-fondo-elevado border-borde-sutil focus:border-azul-primario text-texto-principal"
           {...register('asunto')}
         />
         {errors.asunto && (
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-rojo-neon text-xs">
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-gris-acento text-xs">
             {errors.asunto.message}
           </motion.p>
         )}
@@ -179,7 +179,7 @@ export function FormularioContacto() {
       <div className="space-y-2">
         <div className="flex justify-between">
           <Label htmlFor="mensaje" className="text-texto-principal font-medium">
-            Mensaje <span className="text-rojo-neon">*</span>
+            Mensaje <span className="text-gris-acento">*</span>
           </Label>
           <span className="text-texto-apagado text-xs">
             {mensajeActual.length}/2000
@@ -189,11 +189,11 @@ export function FormularioContacto() {
           id="mensaje"
           placeholder="Escribe tu mensaje aquí..."
           rows={5}
-          className="bg-fondo-elevado border-borde-sutil focus:border-amarillo-neon text-texto-principal resize-none"
+          className="bg-fondo-elevado border-borde-sutil focus:border-azul-primario text-texto-principal resize-none"
           {...register('mensaje')}
         />
         {errors.mensaje && (
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-rojo-neon text-xs">
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-gris-acento text-xs">
             {errors.mensaje.message}
           </motion.p>
         )}
@@ -203,7 +203,7 @@ export function FormularioContacto() {
       <Button
         type="submit"
         disabled={enviando}
-        className="w-full bg-amarillo-neon text-fondo-principal font-titulos font-bold text-lg py-6 hover:bg-amarillo-brillante transition-all disabled:opacity-50"
+        className="w-full boton-vidrio text-azul-cielo font-titulos font-bold text-lg py-6 rounded-xl disabled:opacity-50"
       >
         {enviando ? (
           <span className="flex items-center gap-2">

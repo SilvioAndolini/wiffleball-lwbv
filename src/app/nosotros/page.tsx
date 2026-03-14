@@ -1,5 +1,7 @@
 // Página Nosotros - Sobre la Liga de Wiffle Ball Venezolana
 
+import Image from 'next/image'
+import { HeroPagina } from '@/components/features/compartidos/HeroPagina'
 import { ContenedorAnimado } from '@/components/features/compartidos/ContenedorAnimado'
 
 export const metadata = {
@@ -7,23 +9,22 @@ export const metadata = {
   description: 'Conoce la historia, los valores y el equipo detrás de la Liga de Wiffle Ball Venezolana.',
 }
 
-// Datos del equipo organizador
 const EQUIPO = [
-  { nombre: 'Carlos Rodríguez', rol: 'Fundador & Director', frase: 'El wiffle ball une a Venezuela.' },
-  { nombre: 'María González', rol: 'Coordinadora de Eventos', frase: 'Cada juego es una fiesta.' },
-  { nombre: 'José Martínez', rol: 'Director Deportivo', frase: 'Fair play ante todo.' },
-  { nombre: 'Ana López', rol: 'Community Manager', frase: 'La comunidad es nuestra fuerza.' },
+  {
+    nombre: 'Manuel Sanchez',
+    rol: 'Fundador & Comisionado',
+    descripcion: 'Impulsor principal de la Liga Venezolana de Wiffle Ball. Organizador de torneos y referente del deporte en el país.',
+    foto: '/imagenes/DSC06704.jpg',
+  },
 ]
 
-// Valores de la liga
 const VALORES = [
-  { icono: '🔥', titulo: 'Pasión', descripcion: 'Vivimos y respiramos wiffle ball. Cada juego es una oportunidad para disfrutar.' },
-  { icono: '🤝', titulo: 'Comunidad', descripcion: 'Más que una liga, somos una familia que crece con cada temporada.' },
-  { icono: '⚖️', titulo: 'Fair Play', descripcion: 'El respeto y la deportividad son la base de cada partido.' },
-  { icono: '🎉', titulo: 'Diversión', descripcion: 'No importa si ganas o pierdes, lo importante es pasarla increíble.' },
+  { titulo: 'Pasión', descripcion: 'Vivimos y respiramos wiffle ball. Cada juego es una oportunidad para disfrutar.' },
+  { titulo: 'Comunidad', descripcion: 'Más que una liga, somos una familia que crece con cada temporada.' },
+  { titulo: 'Fair Play', descripcion: 'El respeto y la deportividad son la base de cada partido.' },
+  { titulo: 'Diversión', descripcion: 'No importa si ganas o pierdes, lo importante es pasarla increíble.' },
 ]
 
-// Reglas básicas del wiffle ball
 const REGLAS = [
   { titulo: 'El Juego', descripcion: 'Dos equipos se enfrentan en un campo reducido. Se juega con una pelota de plástico perforada y un bate delgado.' },
   { titulo: 'Equipamiento', descripcion: 'Solo necesitas un bate de wiffle ball, pelotas oficiales y marcadores para el campo. Nosotros proveemos todo.' },
@@ -32,31 +33,26 @@ const REGLAS = [
 
 export default function PaginaNosotros() {
   return (
-    <div className="min-h-screen pt-24 pb-16">
-      {/* Header Hero */}
-      <section className="relative py-16 px-4 overflow-hidden">
-        <div className="absolute inset-0 gradiente-fondo opacity-50" />
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <ContenedorAnimado>
-            <h1 className="font-titulos text-5xl md:text-6xl lg:text-7xl font-bold mb-4">
-              <span className="text-texto-principal">SOBRE </span>
-              <span className="texto-gradiente-venezuela">NOSOTROS</span>
-            </h1>
-            <p className="text-texto-secundario text-lg max-w-xl mx-auto">
-              La historia de cómo un grupo de apasionados creó la liga de wiffle ball más vibrante de Venezuela.
-            </p>
-          </ContenedorAnimado>
-        </div>
-      </section>
+    <>
+      <HeroPagina
+        etiqueta="CONÓCENOS"
+        titulo="NOSOTROS"
+        tituloColor="OTROS"
+        subtitulo="La historia de cómo un grupo de apasionados creó la liga de wiffle ball más vibrante de Venezuela."
+      />
 
       {/* Nuestra Historia */}
-      <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <section className="py-20 px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <ContenedorAnimado variante="desde-izquierda">
-            <h2 className="font-titulos text-3xl md:text-4xl font-bold text-texto-principal mb-6">
-              Nuestra <span className="text-amarillo-neon">Historia</span>
+            <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-azul-primario/60 mb-4">
+              ORIGEN
+            </p>
+            <h2 className="font-titulos text-4xl md:text-5xl font-bold leading-[0.9] mb-8">
+              <span className="text-texto-principal">NUESTRA </span>
+              <span className="texto-gradiente">HISTORIA</span>
             </h2>
-            <div className="space-y-4 text-texto-secundario leading-relaxed">
+            <div className="space-y-4 text-texto-secundario/70 text-sm leading-relaxed">
               <p>
                 Todo comenzó en 2024, cuando un grupo de amigos en Caracas decidió organizar
                 un juego informal de wiffle ball en el Parque del Este. Lo que empezó como una
@@ -69,18 +65,17 @@ export default function PaginaNosotros() {
               </p>
               <p>
                 Hoy, la Liga de Wiffle Ball Venezolana reúne a jugadores de todo el país,
-                organizando torneos, eventos especiales y fomentando una comunidad
-                deportiva única.
+                organizando torneos, eventos especiales y fomentando una comunidad deportiva única.
               </p>
             </div>
           </ContenedorAnimado>
 
           <ContenedorAnimado variante="desde-derecha">
-            <div className="bg-fondo-tarjeta border border-borde-sutil rounded-xl aspect-[4/3] flex items-center justify-center">
+            <div className="bg-fondo-tarjeta/50 border border-borde-sutil/50 rounded-2xl aspect-[4/3] flex items-center justify-center">
               <div className="text-center p-8">
-                <div className="text-7xl mb-4 opacity-30">⚾</div>
-                <p className="text-texto-apagado text-sm">
-                  Foto del equipo - Reemplazar con imagen real
+                <div className="text-6xl mb-4 opacity-10">⚾</div>
+                <p className="text-texto-apagado text-xs">
+                  Foto del equipo - Reemplazar
                 </p>
               </div>
             </div>
@@ -89,29 +84,29 @@ export default function PaginaNosotros() {
       </section>
 
       {/* ¿Qué es el Wiffle Ball? */}
-      <section className="py-16 px-4 bg-fondo-tarjeta/30">
-        <div className="max-w-6xl mx-auto">
-          <ContenedorAnimado className="text-center mb-12">
-            <h2 className="font-titulos text-3xl md:text-4xl font-bold">
-              <span className="text-texto-principal">¿Qué es el </span>
-              <span className="texto-gradiente-venezuela">Wiffle Ball</span>
-              <span className="text-texto-principal">?</span>
+      <section className="py-20 px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <ContenedorAnimado className="mb-16">
+            <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-azul-primario/60 mb-4">
+              EL DEPORTE
+            </p>
+            <h2 className="font-titulos text-4xl md:text-5xl font-bold leading-[0.9]">
+              <span className="text-texto-principal">¿QUÉ ES EL </span>
+              <span className="texto-gradiente">WIFFLE BALL?</span>
             </h2>
           </ContenedorAnimado>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {REGLAS.map((regla, indice) => (
-              <ContenedorAnimado key={regla.titulo} retraso={indice * 0.15}>
-                <div className="bg-fondo-tarjeta border border-borde-sutil rounded-xl p-6 h-full hover:border-amarillo-neon/30 transition-colors">
-                  <div className="w-12 h-12 rounded-lg bg-amarillo-neon/10 flex items-center justify-center mb-4">
-                    <span className="font-titulos text-xl font-bold text-amarillo-neon">
-                      {indice + 1}
-                    </span>
-                  </div>
-                  <h3 className="font-titulos text-xl font-bold text-texto-principal mb-2">
+              <ContenedorAnimado key={regla.titulo} retraso={indice * 0.1}>
+                <div className="bg-fondo-tarjeta/50 border border-borde-sutil/50 rounded-2xl p-6 h-full hover:border-azul-primario/20 transition-all duration-500">
+                  <span className="inline-block font-titulos text-3xl font-bold text-azul-primario/20 mb-4">
+                    0{indice + 1}
+                  </span>
+                  <h3 className="font-titulos text-lg font-bold text-texto-principal mb-2">
                     {regla.titulo}
                   </h3>
-                  <p className="text-texto-secundario text-sm leading-relaxed">
+                  <p className="text-texto-secundario/70 text-sm leading-relaxed">
                     {regla.descripcion}
                   </p>
                 </div>
@@ -122,37 +117,54 @@ export default function PaginaNosotros() {
       </section>
 
       {/* Equipo Organizador */}
-      <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto">
-          <ContenedorAnimado className="text-center mb-12">
-            <h2 className="font-titulos text-3xl md:text-4xl font-bold">
-              <span className="text-texto-principal">El </span>
-              <span className="texto-gradiente-venezuela">Equipo</span>
+      <section className="py-20 px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <ContenedorAnimado className="mb-16">
+            <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-azul-primario/60 mb-4">
+              EQUIPO
+            </p>
+            <h2 className="font-titulos text-4xl md:text-5xl font-bold leading-[0.9]">
+              <span className="text-texto-principal">LAS </span>
+              <span className="texto-gradiente">PERSONAS</span>
             </h2>
-            <p className="text-texto-secundario mt-3">
+            <p className="text-texto-secundario/70 text-sm mt-4">
               Las personas que hacen posible la liga.
             </p>
           </ContenedorAnimado>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="flex flex-wrap gap-6">
             {EQUIPO.map((miembro, indice) => (
               <ContenedorAnimado key={miembro.nombre} variante="escala" retraso={indice * 0.1}>
-                <div className="bg-fondo-tarjeta border border-borde-sutil rounded-xl p-6 text-center hover:border-amarillo-neon/30 transition-all hover:shadow-lg hover:shadow-amarillo-neon/5 group">
-                  {/* Avatar placeholder */}
-                  <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-fondo-elevado flex items-center justify-center group-hover:ring-2 group-hover:ring-amarillo-neon/30 transition-all">
-                    <span className="text-2xl font-titulos font-bold text-texto-apagado">
-                      {miembro.nombre.split(' ').map(n => n[0]).join('')}
-                    </span>
+                <div className="bg-fondo-tarjeta/50 border border-borde-sutil/50 rounded-2xl overflow-hidden hover:border-azul-primario/20 transition-all duration-500 group w-72">
+                  {/* Foto grande */}
+                  <div className="relative w-full aspect-[3/4] overflow-hidden">
+                    <Image
+                      src={miembro.foto}
+                      alt={miembro.nombre}
+                      fill
+                      className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                      sizes="288px"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-fondo-tarjeta via-transparent to-transparent" />
                   </div>
-                  <h3 className="font-titulos text-lg font-bold text-texto-principal">
-                    {miembro.nombre}
-                  </h3>
-                  <p className="text-amarillo-neon text-sm font-medium mb-2">
-                    {miembro.rol}
-                  </p>
-                  <p className="text-texto-apagado text-xs italic">
-                    &ldquo;{miembro.frase}&rdquo;
-                  </p>
+
+                  {/* Info */}
+                  <div className="p-5">
+                    <h3 className="font-titulos text-xl font-bold text-texto-principal leading-tight">
+                      {miembro.nombre}
+                    </h3>
+                    {miembro.rol && (
+                      <p className="text-azul-cielo text-xs font-medium uppercase tracking-[0.12em] mt-1 mb-3">
+                        {miembro.rol}
+                      </p>
+                    )}
+                    <div className="h-px bg-borde-sutil/50 mb-3" />
+                    {miembro.descripcion && (
+                      <p className="text-texto-secundario/70 text-sm leading-relaxed">
+                        {miembro.descripcion}
+                      </p>
+                    )}
+                  </div>
                 </div>
               </ContenedorAnimado>
             ))}
@@ -161,24 +173,29 @@ export default function PaginaNosotros() {
       </section>
 
       {/* Valores */}
-      <section className="py-16 px-4 bg-fondo-tarjeta/30">
-        <div className="max-w-6xl mx-auto">
-          <ContenedorAnimado className="text-center mb-12">
-            <h2 className="font-titulos text-3xl md:text-4xl font-bold">
-              <span className="text-texto-principal">Nuestros </span>
-              <span className="texto-gradiente-venezuela">Valores</span>
+      <section className="py-20 px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <ContenedorAnimado className="mb-16">
+            <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-azul-primario/60 mb-4">
+              FILOSOFÍA
+            </p>
+            <h2 className="font-titulos text-4xl md:text-5xl font-bold leading-[0.9]">
+              <span className="text-texto-principal">NUESTROS </span>
+              <span className="texto-gradiente">VALORES</span>
             </h2>
           </ContenedorAnimado>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {VALORES.map((valor, indice) => (
               <ContenedorAnimado key={valor.titulo} retraso={indice * 0.1}>
-                <div className="text-center p-6">
-                  <div className="text-5xl mb-4">{valor.icono}</div>
-                  <h3 className="font-titulos text-xl font-bold text-texto-principal mb-2">
+                <div className="border-t border-borde-sutil/50 pt-6">
+                  <span className="inline-block font-titulos text-2xl font-bold text-azul-primario/20 mb-3">
+                    0{indice + 1}
+                  </span>
+                  <h3 className="font-titulos text-lg font-bold text-texto-principal mb-2">
                     {valor.titulo}
                   </h3>
-                  <p className="text-texto-secundario text-sm leading-relaxed">
+                  <p className="text-texto-secundario/70 text-sm leading-relaxed">
                     {valor.descripcion}
                   </p>
                 </div>
@@ -187,6 +204,6 @@ export default function PaginaNosotros() {
           </div>
         </div>
       </section>
-    </div>
+    </>
   )
 }

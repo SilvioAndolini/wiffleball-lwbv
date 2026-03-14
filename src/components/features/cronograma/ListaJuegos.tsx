@@ -41,8 +41,8 @@ export function ListaJuegos() {
             <Badge
               className={`font-titulos text-sm px-4 py-1.5 cursor-pointer transition-all ${
                 filtroActivo === filtro.valor
-                  ? 'bg-amarillo-neon text-fondo-principal border-amarillo-neon'
-                  : 'bg-fondo-elevado text-texto-secundario border-borde-sutil hover:border-amarillo-neon/50'
+                  ? 'bg-azul-primario text-white border-azul-primario'
+                  : 'bg-fondo-elevado text-texto-secundario border-borde-sutil hover:border-azul-primario/50'
               }`}
             >
               {filtro.etiqueta}
@@ -53,8 +53,8 @@ export function ListaJuegos() {
 
       {/* Error */}
       {error && (
-        <div className="text-center py-8 px-4 bg-rojo-neon/5 border border-rojo-neon/20 rounded-xl mb-6">
-          <p className="text-rojo-neon text-sm">{error}</p>
+        <div className="text-center py-8 px-4 bg-gris-acento/5 border border-gris-acento/20 rounded-xl mb-6">
+          <p className="text-gris-acento text-sm">{error}</p>
         </div>
       )}
 

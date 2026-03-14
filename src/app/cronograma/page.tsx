@@ -1,5 +1,6 @@
 // Página de Cronograma - Lista de juegos de la liga
 
+import { HeroPagina } from '@/components/features/compartidos/HeroPagina'
 import { ListaJuegos } from '@/components/features/cronograma/ListaJuegos'
 
 export const metadata = {
@@ -9,22 +10,18 @@ export const metadata = {
 
 export default function PaginaCronograma() {
   return (
-    <div className="min-h-screen pt-24 pb-16 px-4">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="font-titulos text-5xl md:text-6xl lg:text-7xl font-bold mb-4">
-            <span className="text-texto-principal">CRONO</span>
-            <span className="texto-gradiente-venezuela">GRAMA</span>
-          </h1>
-          <p className="text-texto-secundario text-lg max-w-xl mx-auto">
-            Todos los juegos de la temporada. Encuentra tu próximo partido y apúntate.
-          </p>
+    <>
+      <HeroPagina
+        etiqueta="TEMPORADA 2026"
+        titulo="CRONOGRAMA"
+        tituloColor="GRAMA"
+        subtitulo="Todos los juegos de la temporada. Encuentra tu próximo partido y apúntate."
+      />
+      <div className="px-6 lg:px-8 pb-24">
+        <div className="max-w-7xl mx-auto">
+          <ListaJuegos />
         </div>
-
-        {/* Lista de juegos */}
-        <ListaJuegos />
       </div>
-    </div>
+    </>
   )
 }
