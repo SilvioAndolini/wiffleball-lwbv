@@ -23,7 +23,7 @@ const IMAGENES_HEROE = [
   { src: '/imagenes/DSC06645.jpg', alt: 'Jugadores LWBV en práctica de bateo' },
 ]
 
-const INTERVALO_CARRUSEL = 10000 // 10 segundos
+const INTERVALO_CARRUSEL = 5000 // 5 segundos
 
 export function SeccionHeroe() {
   const referencia = useRef(null)
@@ -119,7 +119,7 @@ export function SeccionHeroe() {
             visible: { transition: { staggerChildren: 0.08 } },
           }}
         >
-          {['PASIÓN', 'POR EL', 'JUEGO.'].map((linea, i) => (
+          {['PASIÓN', 'POR EL', 'WIFFELBALL.'].map((linea, i) => (
             <motion.span
               key={i}
               className={`block text-6xl sm:text-7xl md:text-8xl lg:text-9xl ${
