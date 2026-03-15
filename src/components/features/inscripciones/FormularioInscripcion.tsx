@@ -161,7 +161,7 @@ export function FormularioInscripcion() {
           <Input
             id="telefono"
             type="tel"
-            placeholder="+58 412 1234567"
+            placeholder="+58 412 0636575"
             className="bg-fondo-elevado border-borde-sutil focus:border-azul-primario text-texto-principal"
             {...register('telefono')}
           />

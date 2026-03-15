@@ -8,7 +8,7 @@ export const RUTAS = {
   CONTACTO: '/contacto',
 } as const
 
-export const ENLACE_WHATSAPP = 'https://wa.me/584121234567'
+export const ENLACE_WHATSAPP = 'https://wa.me/584120636575'
 
 export const ENLACES_NAVEGACION = [
   { nombre: 'Inicio', ruta: RUTAS.INICIO },

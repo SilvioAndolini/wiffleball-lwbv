@@ -42,7 +42,7 @@ export default function PaginaContacto() {
                     </div>
                     <div>
                       <p className="text-texto-principal font-medium mb-1">Teléfono</p>
-                      <p className="text-texto-secundario/70">+58 412 123 4567</p>
+                      <p className="text-texto-secundario/70">+58 412 063 6575</p>
                     </div>
                     <div>
                       <p className="text-texto-principal font-medium mb-1">Ubicación</p>
