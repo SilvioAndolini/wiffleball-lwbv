@@ -3,8 +3,10 @@
 // Sección "Nuestros Momentos" - Grid de fotos verticales + Showreel
 // Layout: fotos a la izquierda, video showreel a la derecha
 
+import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { Volume2, VolumeX } from 'lucide-react'
 import { ContenedorAnimado } from '@/components/features/compartidos/ContenedorAnimado'
 
 // Fotos con orientación principalmente vertical
@@ -54,6 +56,21 @@ const FOTOS = [
 const COLORES_ACENTO = ['#FFFFFF', '#E5E5E5', '#9CA3AF', '#C0C0C0', '#808080']
 
 export function CarruselFotos() {
+  const refVideo = useRef<HTMLVideoElement>(null)
+  const [silenciado, setSilenciado] = useState(true)
+
+  function alternarSonido() {
+    const video = refVideo.current
+    if (!video) return
+    if (silenciado) {
+      video.muted = false
+      video.volume = 0.4
+    } else {
+      video.muted = true
+    }
+    setSilenciado(!silenciado)
+  }
+
   return (
     <section className="py-24 px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -144,6 +161,7 @@ export function CarruselFotos() {
             {/* Video que ocupa toda la altura de la columna izquierda */}
             <div className="relative h-full min-h-[400px] rounded-2xl overflow-hidden bg-fondo-elevado border border-borde-sutil/40">
               <video
+                ref={refVideo}
                 autoPlay
                 muted
                 loop
@@ -152,6 +170,18 @@ export function CarruselFotos() {
               >
                 <source src="/videos/showreel.mp4" type="video/mp4" />
               </video>
+
+              {/* Botón silencio/sonido — esquina superior derecha */}
+              <button
+                onClick={alternarSonido}
+                className="absolute top-4 right-4 z-10 boton-vidrio rounded-full p-2 text-azul-cielo"
+                aria-label={silenciado ? 'Activar sonido' : 'Silenciar'}
+              >
+                {silenciado
+                  ? <VolumeX className="size-4" />
+                  : <Volume2 className="size-4" />
+                }
+              </button>
 
               {/* Etiqueta superpuesta — esquina superior izquierda */}
               <div className="absolute top-4 left-4 z-10 flex items-center gap-2 vidrio rounded-full px-3 py-1.5">
